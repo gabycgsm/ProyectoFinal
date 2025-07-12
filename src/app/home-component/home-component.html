@@ -1,0 +1,27 @@
+<p>home-component works!</p>
+
+<form #userForm = "ngForm" (ngSubmit)="onSubmit(usuario)">
+    <label for="nombre">
+        Nombre: <input type="text" name="nombre" [(ngModel)] = "usuario.nombre" required placeholder="Ingrese el nombre">
+    </label>
+    <label for="direccion">
+        Dirección: <input type="text" name="direccion" [(ngModel)] = "usuario.direccion" required placeholder="Ingrese la dirección">
+    </label>
+    <label for="telefono">
+        Teléfono: <input type="text" name="telefono" [(ngModel)] = "usuario.telefono" required placeholder="Ingrese el teléfono">
+    </label>
+
+    <button type="submit">Save</button>
+
+</form>
+
+<div *ngIf = "usuarios.length > 0" class="usuario-list">
+    <h2>Usuarios</h2>
+    @for(user of usuarios; track user){
+    <ul class="usuario">    
+    <strong>{{user.nombre}}</strong>:<li>{{user.direccion}}</li>:<li>{{user.telefono}}</li>
+    <button (click)="editUsuario(user)">Edit</button>
+      <button (click)="deleteUsuario(user)">Delete</button>
+    </ul>
+}
+</div>

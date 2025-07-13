@@ -1,0 +1,7 @@
+{
+    "usuarios": [
+      { "idUsuario": 1, "nombre": "Juan Pérez", "direccion": "Calle 123", "telefono": "555-1234" },
+      { "idUsuario": 2, "nombre": "Ana Gómez", "direccion": "Avenida 456", "telefono": "555-5678" },
+      { "idUsuario": 3, "nombre": "Luis Martínez", "direccion": "Plaza 789", "telefono": "555-9012" }
+    ]
+  }

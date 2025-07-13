@@ -8,7 +8,8 @@ import { Usuario } from './app';
   providedIn: 'root'
 })
 export class UserService {
-  private readonly apiUrl = environment.api;
+  //private readonly apiUrl = environment.api;
+  private readonly apiUrl = 'http://localhost:3000/usuarios'; 
   private http = inject(HttpClient);
   private jsonHeader = new HttpHeaders({'Content-Type': 'application/json'});
 

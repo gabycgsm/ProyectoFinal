@@ -23,6 +23,6 @@ export class App {
 export interface Usuario {
   id: number;
   name: string;
-  address: { street: string };
+  address: string;
   phone: string;
 }

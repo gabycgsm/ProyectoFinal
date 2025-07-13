@@ -2,16 +2,16 @@
 
 <form #usuarioForm = "ngForm" (ngSubmit)="handleSave(usuarioSeleccionado)">
     <label for="nombre">
-        Nombre: <input type="text" name="nombre" [(ngModel)] = "usuarioSeleccionado.name" required placeholder="Ingrese el nombre">
+        Nombre: <input type="text" name="nombre" [(ngModel)] = "usuarioSeleccionado.name"  placeholder="Ingrese el nombre" required>
     </label>
     <label for="direccion">
-        Dirección: <input type="text" name="direccion" [(ngModel)] = "usuarioSeleccionado.address.street" required placeholder="Ingrese la dirección">
+        Dirección: <input type="text" name="direccion" [(ngModel)] = "usuarioSeleccionado.address" required placeholder="Ingrese la dirección">
     </label>
     <label for="telefono">
         Teléfono: <input type="text" name="telefono" [(ngModel)] = "usuarioSeleccionado.phone" required placeholder="Ingrese el teléfono">
     </label>
 
-    <button type="submit">Save</button>
+    <button type="submit" [disabled]="usuarioForm.invalid">Save</button>
 
 </form>
 
@@ -30,7 +30,7 @@
 <p *ngIf="usuario.length === 0">No hay usuarios disponibles</p>
   <ul>
   <li *ngFor="let user of usuario">
-    {{ user.name }} - {{ user.address.street }} - {{ user.phone }}
+    {{ user.name }} - {{ user.address }} - {{ user.phone }}
     <button (click)="editUsuario(user)">Editar</button>
     <button (click)="confirmarEliminar(user)">Eliminar</button>
   </li>

@@ -8,8 +8,8 @@ import { Usuario } from './app';
   providedIn: 'root'
 })
 export class UserService {
-  //private readonly apiUrl = environment.api;
-  private readonly apiUrl = 'https://jsonplaceholder.typicode.com/users'; 
+  private readonly apiUrl = environment.api;
+  //private readonly apiUrl = 'https://jsonplaceholder.typicode.com/users'; 
   private http = inject(HttpClient);
   private jsonHeader = new HttpHeaders({'Content-Type': 'application/json'});
 
@@ -18,13 +18,13 @@ export class UserService {
   }
 
   addUsuarios(user: Usuario) : Observable<Usuario>{
-    return this.http.post<Usuario>(`${this.apiUrl}`, user, {
+    return this.http.post<Usuario>(`${this.apiUrl}/add`, user, {
     headers: this.jsonHeader
     });
   }
 
   updateUsuarios(user: Usuario) : Observable<Usuario>{
-    return this.http.post<Usuario>(`${this.apiUrl}/${user.id}`, user, {
+    return this.http.put<Usuario>(`${this.apiUrl}/update/${user.id}`, user, {
     headers: this.jsonHeader
     });
   }
@@ -36,7 +36,7 @@ export class UserService {
   }
 
   deleteUsuarios(user: Usuario) : Observable<Usuario>{
-    return this.http.delete<Usuario>(`${this.apiUrl}/${user.id}`, {
+    return this.http.delete<Usuario>(`${this.apiUrl}/delete/${user.id}`, {
     headers: this.jsonHeader
     });
   }

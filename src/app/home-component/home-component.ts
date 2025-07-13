@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   usuario: Usuario[] = [];
   //usuarioSeleccionado: Usuario = {idUsuario: 0, nombre: '', direccion: '', telefono: ''};
-  usuarioSeleccionado: Usuario = {id: 0, name: '', address: { street: '' } , phone: ''};
+  usuarioSeleccionado: Usuario = {id: 0, name: '', address: '' , phone: ''};
 
   usuarioAEliminar: Usuario | null = null;
 
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit {
     } else {
       this.userService.addUsuarios(data).subscribe(() => this.loadUsuarios());
     }
-    this.usuarioSeleccionado = {id: 0, name: '', address: { street: '' } , phone: ''};
+    this.usuarioSeleccionado = {id: 0, name: '', address: '' , phone: ''};
   }
 
   editUsuario(data: Usuario){

@@ -9,7 +9,7 @@ import { Usuario } from './app';
 })
 export class UserService {
   //private readonly apiUrl = environment.api;
-  private readonly apiUrl = 'http://localhost:3000/usuarios'; 
+  private readonly apiUrl = 'https://jsonplaceholder.typicode.com/users'; 
   private http = inject(HttpClient);
   private jsonHeader = new HttpHeaders({'Content-Type': 'application/json'});
 
@@ -24,19 +24,19 @@ export class UserService {
   }
 
   updateUsuarios(user: Usuario) : Observable<Usuario>{
-    return this.http.post<Usuario>(`${this.apiUrl}/${user.idUsuario}`, user, {
+    return this.http.post<Usuario>(`${this.apiUrl}/${user.id}`, user, {
     headers: this.jsonHeader
     });
   }
 
   patchUsuarios(user: Usuario) : Observable<Usuario>{
-    return this.http.patch<Usuario>(`${this.apiUrl}/${user.idUsuario}`, user, {
+    return this.http.patch<Usuario>(`${this.apiUrl}/${user.id}`, user, {
     headers: this.jsonHeader
     });
   }
 
   deleteUsuarios(user: Usuario) : Observable<Usuario>{
-    return this.http.delete<Usuario>(`${this.apiUrl}/${user.idUsuario}`, {
+    return this.http.delete<Usuario>(`${this.apiUrl}/${user.id}`, {
     headers: this.jsonHeader
     });
   }

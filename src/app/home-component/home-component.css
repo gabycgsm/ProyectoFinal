@@ -1,0 +1,24 @@
+form {
+  margin-top: 20px;
+}
+
+input {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.confirm-modal {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f8f8f8;
+  border: 1px solid #ccc;
+  padding: 20px;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.confirm-modal button {
+  margin-right: 10px;
+}

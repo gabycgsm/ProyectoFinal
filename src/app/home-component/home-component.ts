@@ -16,7 +16,10 @@ export class HomeComponent implements OnInit {
   constructor(private userService: UserService) { };
 
   usuario: Usuario[] = [];
-  usuarioSeleccionado: Usuario = {idUsuario: 0, nombre: '', direccion: '', telefono: ''};
+  //usuarioSeleccionado: Usuario = {idUsuario: 0, nombre: '', direccion: '', telefono: ''};
+  usuarioSeleccionado: Usuario = {id: 0, name: '', address: { street: '' } , phone: ''};
+
+  usuarioAEliminar: Usuario | null = null;
 
   ngOnInit() {
     this.loadUsuarios();
@@ -30,12 +33,12 @@ export class HomeComponent implements OnInit {
   }
 
   handleSave(data: Usuario){
-    if(data.idUsuario){
+    if(data.id){
       this.userService.updateUsuarios(data).subscribe(() => this.loadUsuarios());
     } else {
       this.userService.addUsuarios(data).subscribe(() => this.loadUsuarios());
     }
-    this.usuarioSeleccionado = {idUsuario: 0, nombre: '', direccion: '', telefono: ''};
+    this.usuarioSeleccionado = {id: 0, name: '', address: { street: '' } , phone: ''};
   }
 
   editUsuario(data: Usuario){
@@ -44,7 +47,22 @@ export class HomeComponent implements OnInit {
 
   deleteUsuario(data: Usuario){
     this.userService.deleteUsuarios(data).subscribe(() => this.loadUsuarios());
+    this.usuario = this.usuario.filter(u => u.id !== data.id);
   }
   
+  confirmarEliminar(usuario: Usuario) {
+    this.usuarioAEliminar = usuario;
+  }
+
+  eliminarConfirmado() {
+    if (this.usuarioAEliminar) {
+      this.deleteUsuario(this.usuarioAEliminar);
+      this.usuarioAEliminar = null;
+    }
+  }
+
+  cancelarEliminar() {
+    this.usuarioAEliminar = null;
+  }
 
 }

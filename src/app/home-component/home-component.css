@@ -149,3 +149,21 @@ button.eliminar:hover {
   background-color: #7f8c8d;
   color: white;
 }
+
+/* -------- BOTÓN CANCELAR -------- */
+button[type="button"] {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color:  #5d6d7e; /* rojo similar a eliminar */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: 10px; /* separa un poco del botón guardar */
+  transition: background-color 0.3s ease;
+}
+
+button[type="button"]:hover {
+  background-color: #34495e;  /* rojo oscuro al pasar mouse */
+}

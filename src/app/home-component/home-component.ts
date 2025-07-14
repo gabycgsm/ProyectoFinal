@@ -65,4 +65,7 @@ export class HomeComponent implements OnInit {
     this.usuarioAEliminar = null;
   }
 
+  handleCancel() {
+  this.usuarioSeleccionado = {id: 0, name: '', address: '' , phone: ''};
+  }
 }

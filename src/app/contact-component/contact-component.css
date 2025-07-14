@@ -1,0 +1,38 @@
+/* Contenedor general */
+.contact-image-container {
+  max-width: 520px; /* un poco más ancho que la imagen */
+  margin: 20px auto; /* centrado horizontal con margen arriba/abajo */
+  padding: 10px;
+  border: 2px solid #3498db; /* borde azul suave */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+  background-color: #f0f8ff;
+  text-align: center;
+}
+
+/* Imagen */
+.contact-image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Títulos */
+h2 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* Párrafo */
+p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  color: #555;
+  margin-top: 10px;
+  font-size: 1.1rem;
+}

@@ -1,17 +1,33 @@
-<p>home-component works!</p>
 
-<form #usuarioForm = "ngForm" (ngSubmit)="handleSave(usuarioSeleccionado)">
-    <label for="nombre">
-        Nombre: <input type="text" name="nombre" [(ngModel)] = "usuarioSeleccionado.name"  placeholder="Ingrese el nombre" required>
-    </label>
-    <label for="direccion">
-        Dirección: <input type="text" name="direccion" [(ngModel)] = "usuarioSeleccionado.address" required placeholder="Ingrese la dirección">
-    </label>
-    <label for="telefono">
-        Teléfono: <input type="text" name="telefono" [(ngModel)] = "usuarioSeleccionado.phone" required placeholder="Ingrese el teléfono">
-    </label>
 
-    <button type="submit" [disabled]="usuarioForm.invalid">Save</button>
+<form #usuarioForm="ngForm" (ngSubmit)="handleSave(usuarioSeleccionado)">
+  <label for="nombre">
+    Nombre: <input type="text" name="nombre" [(ngModel)]="usuarioSeleccionado.name" placeholder="Ingrese el nombre"
+      required #nombre="ngModel">
+  </label>
+
+  <div *ngIf="nombre.invalid && nombre.touched" style="color: red;">
+    <small> Nombre es obligatorio</small>
+  </div>
+
+  <br />
+  <label for="direccion">
+    Dirección: <input type="text" name="direccion" [(ngModel)]="usuarioSeleccionado.address" required
+      placeholder="Ingrese la dirección" #direccion="ngModel">
+  </label>
+  <div *ngIf="direccion.invalid && direccion.touched" style="color: red;">
+    <small> Dirección es obligatorio</small>
+  </div>
+  <br />
+  <label for="telefono">
+    Teléfono: <input type="text" name="telefono" [(ngModel)]="usuarioSeleccionado.phone" required
+      placeholder="Ingrese el teléfono" #telefono="ngModel">
+  </label>
+  <div *ngIf="telefono.invalid && telefono.touched" style="color: red;">
+    <small> Teléfono es obligatorio</small>
+  </div>
+  <br />
+  <button type="submit" [disabled]="usuarioForm.invalid">Save</button>
 
 </form>
 
@@ -25,21 +41,40 @@
     </ul>
 }
 </div>-->
-<div>
-    <h2>Lista de Usuarios</h2>
-<p *ngIf="usuario.length === 0">No hay usuarios disponibles</p>
-  <ul>
-  <li *ngFor="let user of usuario">
-    {{ user.name }} - {{ user.address }} - {{ user.phone }}
-    <button (click)="editUsuario(user)">Editar</button>
-    <button (click)="confirmarEliminar(user)">Eliminar</button>
-  </li>
-</ul>
+
+
+<div class="tabla-usuarios">
+  <h2>Lista de Usuarios</h2>
+
+  <p *ngIf="usuario.length === 0">No hay usuarios disponibles</p>
+
+  <table *ngIf="usuario.length > 0">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Dirección</th>
+        <th>Teléfono</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usuario">
+        <td>{{ user.name }}</td>
+        <td>{{ user.address }}</td>
+        <td>{{ user.phone }}</td>
+        <td>
+          <button class="editar" (click)="editUsuario(user)">Editar</button>
+          <button class="eliminar" (click)="confirmarEliminar(user)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
 
 <!-- Confirmación eliminar -->
 <div *ngIf="usuarioAEliminar" class="confirm-modal">
-    <p>¿Seguro que quieres eliminar a {{ usuarioAEliminar.name }}?</p>
-    <button (click)="eliminarConfirmado()">Sí, eliminar</button>
-    <button (click)="cancelarEliminar()">Cancelar</button>
-  </div>
+  <p>¿Seguro que quieres eliminar a {{ usuarioAEliminar.name }}?</p>
+  <button (click)="eliminarConfirmado()">Sí, eliminar</button>
+  <button (click)="cancelarEliminar()">Cancelar</button>
+</div>
